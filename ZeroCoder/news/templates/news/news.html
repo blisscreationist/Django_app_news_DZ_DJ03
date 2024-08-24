@@ -1,0 +1,110 @@
+{% extends 'main/layoute.html' %}
+{% load static %}
+{% block title %}
+    <title>Арикон</title>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .carousel {
+            margin: 20px auto;
+            width: 80%;
+            overflow: hidden;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .card {
+            width: 300px;
+            perspective: 1000px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .btn-more {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-more:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <h1>Новостная страница</h1>
+    <br>
+
+{% for new in news %}
+	<div>
+		<h3> {{ new.title }} </h3>
+        <br>
+		<h4> {{ new.short_description }} </h4>
+        <br>
+        <p> {{ new.text }} </p>
+        <strong> Автор публикации: {{ new.author_name }}</strong>
+        <p> Дата публикации: {{ new.pub_date }} </p>
+        <br>
+        <br>
+
+ {% endfor %}
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://nhk-aricon.ru/upload/iblock/e95/e95a708287fdf5898f61cbc700ef8d18.jpg" alt="Card image">
+            <div class="card-body">
+                <p>АО «НХК «Арикон» и «Рынок ЛКМ и сырья Средней Азии»</p>
+                <a href="#" class="btn-more">Подробнее</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://nhk-aricon.ru/upload/iblock/488/488647c6da8eac5a5a0ac26c2c99e936.jpg" alt="Card image">
+            <div class="card-body">
+                <p>«Арикон» на главной мебельной выставке года</p>
+                <a href="#" class="btn-more">Подробнее</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://nhk-aricon.ru/upload/iblock/d14/d14a6a9eae545344e9c9e2faf113f3a6.jpg" alt="Card image">
+            <div class="card-body">
+                <p>DEPUR на выставке MIMS Automobility Moscow 2023</p>
+                <a href="#" class="btn-more">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
